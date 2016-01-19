@@ -2,10 +2,9 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: notarget
+target pngtarget pdftarget vtarget acrtarget: liberia150429.csv 
 
 ##################################################################
-
 
 # make files
 
@@ -15,7 +14,29 @@ include stuff.mk
 
 ##################################################################
 
+## What is a good way to archive the .csv files?
+
+Sources += $(wildcard *.R)
+
 ## Content
+
+liberia150429.csv: 
+	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:LBR"
+
+sierraLeone150429.csv: 
+	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:SLE"
+
+guinea150429.csv: 
+	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:GIN"
+
+%.npc.Rout: %.read.Rout npc.R
+	$(run-R)
+
+%.read.Rout: %.csv read.R
+	$(run-R)
+
+%.tsplot.Rout: %.Rout tsplot.R
+	$(run-R)
 
 ######################################################################
 
@@ -27,5 +48,5 @@ include stuff.mk
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
 
-# -include $(ms)/wrapR.mk
+-include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
