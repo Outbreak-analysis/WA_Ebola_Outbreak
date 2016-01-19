@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: liberia150429.csv 
+target pngtarget pdftarget vtarget acrtarget: liberia150429.npc.tsplot.Rout 
 
 ##################################################################
 
@@ -16,7 +16,13 @@ include stuff.mk
 
 ## What is a good way to archive the .csv files?
 
+newdir: liberia150429.npc.tsplot.Rout
+
 Sources += $(wildcard *.R)
+
+# Hook
+
+liberia150429.npc.tsplot.Rout:
 
 ## Content
 
