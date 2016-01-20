@@ -16,7 +16,7 @@ include stuff.mk
 
 ## What is a good way to archive the .csv files?
 
-newdir: liberia150429.npc.tsplot.Rout
+# newdir: liberia150429.npc.tsplot.Rout
 
 Sources += $(wildcard *.R)
 
