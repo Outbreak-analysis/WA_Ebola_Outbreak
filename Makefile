@@ -24,9 +24,11 @@ Sources += $(wildcard *.R)
 
 # Hook
 
+liberia150429.npc.tsplot.Rout:
 sierraLeone150429.npc.tsplot.Rout:
+guinea150429.npc.tsplot.Rout:
 
-## Content
+## Download and label current versions
 
 liberia150429.csv: 
 	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:LBR"
@@ -37,10 +39,23 @@ sierraLeone150429.csv:
 guinea150429.csv: 
 	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:GIN"
 
-%.npc.Rout: %.read.Rout npc.R
+liberia.csv: liberia150429.csv
+	$(copy)
+
+sierraLeone.csv: sierraLeone150429.csv
+	$(copy)
+
+guinea.csv: guinea150429.csv
+	$(copy)
+
+liberia.npc.Rout: npc.R
+
+.PRECIOUS: %.read.Rout
+%.read.Rout: %.csv read.R
 	$(run-R)
 
-%.read.Rout: %.csv read.R
+.PRECIOUS: %.npc.Rout
+%.npc.Rout: %.read.Rout %.Rout npc.R
 	$(run-R)
 
 %.tsplot.Rout: %.Rout tsplot.R

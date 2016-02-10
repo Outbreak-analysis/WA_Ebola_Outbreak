@@ -1,3 +1,4 @@
+
 country <- dat$Country[[1]]
 dat <- subset(dat,
 	TRUE
@@ -11,7 +12,17 @@ names(dat) <- c("epiweek", "cases")
 dat <- within(dat, {
 	week_ending <- sub(".*to ", "", epiweek)
 	week_ending <- as.Date(week_ending, format="%d %B %Y")
-	pre <- week_ending<as.Date("2014-09-1")
+	pre <- week_ending<startDate
 })
 
-print(summary(dat))
+dat <- dat[order(dat$week_ending), ]
+print(dat)
+
+inc <- with(dat, data.frame(
+	week = floor((week_ending-startDate)/7)
+	, cases = cases
+))
+
+inc <- subset(inc, week>=0)
+print(inc)
+write.csv(inc, csvname, row.names=FALSE)
