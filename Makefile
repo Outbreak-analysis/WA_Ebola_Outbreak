@@ -2,7 +2,9 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: liberia150429.npc.tsplot.Rout 
+target pngtarget pdftarget vtarget acrtarget: sierraLeone150429.npc.tsplot.Rout.pdf
+
+plots: liberia150429.npc.tsplot.Rout.pdf sierraLeone150429.npc.tsplot.Rout.pdf guinea150429.npc.tsplot.Rout.pdf
 
 ##################################################################
 
@@ -22,7 +24,7 @@ Sources += $(wildcard *.R)
 
 # Hook
 
-liberia150429.npc.tsplot.Rout:
+sierraLeone150429.npc.tsplot.Rout:
 
 ## Content
 
