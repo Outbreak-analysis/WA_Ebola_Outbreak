@@ -1,8 +1,7 @@
 # WA_Ebola_Outbreak
-### Hooks for the editor to set the default target
-current: target
 
-target pngtarget pdftarget vtarget acrtarget: liberia150429.csv 
+current: target
+target pngtarget pdftarget vtarget acrtarget: liberia150429.npc.tsplot.Rout.pdf
 
 plots: liberia150429.npc.tsplot.Rout.pdf sierraLeone150429.npc.tsplot.Rout.pdf guinea150429.npc.tsplot.Rout.pdf
 
@@ -53,6 +52,9 @@ liberia.npc.Rout: npc.R
 .PRECIOUS: %.read.Rout
 %.read.Rout: %.csv read.R
 	$(run-R)
+
+liberia1%.R: liberia.R
+	$(link)
 
 .PRECIOUS: %.npc.Rout
 %.npc.Rout: %.read.Rout %.Rout npc.R
