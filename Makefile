@@ -1,7 +1,7 @@
 # WA_Ebola_Outbreak
 
 current: target
-target pngtarget pdftarget vtarget acrtarget: liberia150429.npc.tsplot.Rout.pdf
+target pngtarget pdftarget vtarget acrtarget: liberia150429.npc.tsplot.Rout 
 
 plots: liberia150429.npc.tsplot.Rout.pdf sierraLeone150429.npc.tsplot.Rout.pdf guinea150429.npc.tsplot.Rout.pdf
 
