@@ -1,10 +1,11 @@
 library(ggplot2)
-theme_set(theme_bw())
+theme_set(theme_bw(base_size=20))
 
 p <- (ggplot(dat, aes(x=week_ending, y=cases))
 	+ geom_point()
 	+ geom_line(size=1.5)
 	+ ggtitle(country)
+	+ xlab("")
 )
 
 print(p)

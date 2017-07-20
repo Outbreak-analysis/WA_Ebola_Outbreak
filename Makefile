@@ -1,7 +1,7 @@
 # WA_Ebola_Outbreak
 
 current: target
-target pngtarget pdftarget vtarget acrtarget: liberia150429.npc.tsplot.Rout 
+-include target.mk
 
 plots: liberia150429.npc.tsplot.Rout.pdf sierraLeone150429.npc.tsplot.Rout.pdf guinea150429.npc.tsplot.Rout.pdf
 
@@ -60,6 +60,7 @@ liberia1%.R: liberia.R
 %.npc.Rout: %.read.Rout %.Rout npc.R
 	$(run-R)
 
+liberia.npc.tsplot.Rout:  tsplot.R
 %.tsplot.Rout: %.Rout tsplot.R
 	$(run-R)
 
