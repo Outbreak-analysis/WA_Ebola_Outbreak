@@ -12,7 +12,7 @@ names(dat) <- c("epiweek", "cases")
 dat <- within(dat, {
 	week_ending <- sub(".*to ", "", epiweek)
 	week_ending <- as.Date(week_ending, format="%d %B %Y")
-	pre <- week_ending<startDate
+	pre <- week_ending<preDate
 })
 
 dat <- dat[order(dat$week_ending), ]
