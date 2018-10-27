@@ -1,9 +1,16 @@
 # WA_Ebola_Outbreak
+# liberia.npc.tsplot.Rout:
 
 current: target
 -include target.mk
 
 plots: liberia150429.npc.tsplot.Rout.pdf sierraLeone150429.npc.tsplot.Rout.pdf guinea150429.npc.tsplot.Rout.pdf
+
+##################################################################
+
+## WHO part of the pipeline is broken, see Dropbox
+
+Sources += liberia150429.csv
 
 ##################################################################
 
