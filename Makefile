@@ -1,4 +1,5 @@
 # WA_Ebola_Outbreak
+# liberia.npc.tsplot.Rout:
 
 current: target
 -include target.mk
@@ -7,9 +8,15 @@ plots: liberia150429.npc.tsplot.Rout.pdf sierraLeone150429.npc.tsplot.Rout.pdf g
 
 ##################################################################
 
+## WHO part of the pipeline is broken, see Dropbox
+
+Sources += liberia150429.csv
+
+##################################################################
+
 # make files
 
-Sources = Makefile .ignore README.md sub.mk LICENSE.md
+Sources += Makefile .ignore README.md sub.mk LICENSE.md
 include sub.mk
 # include $(ms)/perl.def
 
