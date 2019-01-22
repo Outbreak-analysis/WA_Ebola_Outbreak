@@ -36,6 +36,8 @@ guinea150429.npc.tsplot.Rout:
 
 ## Download and label current versions
 
+## liberia.npc.tsplot.Rout-1.pdf
+
 Ignore += liberia150429.csv
 liberia150429.csv: 
 	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:LBR"
