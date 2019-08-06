@@ -4,6 +4,10 @@
 current: target
 -include target.mk
 
+sierraLeone.npc.Rout.csv:
+
+liberia150429.npc.tsplot.Rout.pdf:
+
 plots: liberia150429.npc.tsplot.Rout.pdf sierraLeone150429.npc.tsplot.Rout.pdf guinea150429.npc.tsplot.Rout.pdf
 
 ##################################################################
@@ -11,6 +15,9 @@ plots: liberia150429.npc.tsplot.Rout.pdf sierraLeone150429.npc.tsplot.Rout.pdf g
 ## WHO part of the pipeline is broken, see Dropbox
 
 Sources += liberia150429.csv
+
+sierraLeone150429.csv: 
+	ln -fs ~/Dropbox/academicWW/WHO_Ebola_data/$@
 
 ##################################################################
 
@@ -23,8 +30,6 @@ include sub.mk
 ##################################################################
 
 ## What is a good way to archive the .csv files?
-
-# newdir: liberia150429.npc.tsplot.Rout
 
 Sources += $(wildcard *.R)
 
@@ -39,12 +44,12 @@ guinea150429.npc.tsplot.Rout:
 ## liberia.npc.tsplot.Rout-1.pdf
 
 Ignore += liberia150429.csv
-liberia150429.csv: 
-	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:LBR"
+## iberia150429.csv: 
+## wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:LBR"
 
 Ignore += sierraLeone150429.csv
-sierraLeone150429.csv: 
-	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:SLE"
+## sierraLeone150429.csv: 
+## wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:SLE"
 
 Ignore += guinea150429.csv
 guinea150429.csv: 
@@ -74,6 +79,10 @@ liberia1%.R: liberia.R
 	$(run-R)
 
 liberia.npc.tsplot.Rout:  tsplot.R
+%.tsplot.Rout: %.Rout tsplot.R
+	$(run-R)
+
+sierraLeone.npc.tsplot.Rout:  tsplot.R
 %.tsplot.Rout: %.Rout tsplot.R
 	$(run-R)
 
