@@ -55,7 +55,7 @@ Ignore += guinea150429.csv
 guinea150429.csv: 
 	wget -O $@ "http://apps.who.int/gho/athena/xmart/DATAPACKAGEID/2015-04-29?format=csv&profile=text&filter=COUNTRY:GIN"
 
-Ignore += liberia.csv
+Ignore += liberia.csv sierraLeone.csv guinea.csv
 liberia.csv: liberia150429.csv
 	$(copy)
 
