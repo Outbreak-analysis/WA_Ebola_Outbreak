@@ -1,4 +1,14 @@
 # WA_Ebola_Outbreak
+## This is WA_Ebola_Outbreak, a screens project directory
+## makestuff/project.Makefile
+
+current: target
+-include target.mk
+
+# include makestuff/perl.def
+
+######################################################################
+
 # liberia.npc.tsplot.Rout:
 
 current: target
@@ -22,14 +32,6 @@ sierraLeone150429.csv:
 ##################################################################
 
 # make files
-
-Sources += Makefile .ignore README.md sub.mk LICENSE.md
-include sub.mk
-# include $(ms)/perl.def
-
-##################################################################
-
-## What is a good way to archive the .csv files?
 
 Sources += $(wildcard *.R)
 
@@ -88,13 +90,24 @@ sierraLeone.npc.tsplot.Rout:  tsplot.R
 
 ######################################################################
 
+vim_session:
+	bash -cl "vmt"
+
+######################################################################
+
 ### Makestuff
 
-## Change this name to download a new version of the makestuff directory
-# Makefile: start.makestuff
+Sources += Makefile
 
--include $(ms)/git.mk
--include $(ms)/visual.mk
+Ignore += makestuff
+msrepo = https://github.com/dushoff
+Makefile: makestuff/Makefile
+makestuff/Makefile:
+	git clone $(msrepo)/makestuff
+	ls $@
 
--include $(ms)/wrapR.mk
-# -include $(ms)/oldlatex.mk
+-include makestuff/os.mk
+-include makestuff/wrapR.mk
+-include makestuff/git.mk
+-include makestuff/visual.mk
+-include makestuff/projdir.mk
